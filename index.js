@@ -1,4 +1,5 @@
 // Routing to controller page
+require('dotenv').config();
 const homePageController = require('./controllers/home');
 const gPageController = require('./controllers/G');
 const gTwoPageController = require('./controllers/G2');
@@ -32,6 +33,7 @@ const { title } = require('process');
 const bodyParser = require('body-parser');
 const { urlencoded } = require('body-parser');
 const flash = require('connect-flash');
+const mongoStore = require('connect-mongo');
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -42,6 +44,9 @@ const expressSession = require("express-session");
 app.use(
     expressSession({
       secret: "seeni699nimis259",
+      resave: false,
+      saveUninitialized: true,
+      store: mongoStore.create({mongoUrl: process.env.MONGO_URL})
     })
   );
 app.use(flash());
@@ -60,8 +65,9 @@ app.use("*", (req, res, next) => {
 
 // Database Connection
 mongoose.connect(
-  "mongodb+srv://NTuser:<password>@cluster0.im04h4m.mongodb.net/?retryWrites=true&w=majority",
-  { user: "NTuser", pass: "Nimisha1234" },
+  // "mongodb+srv://Seeniya:Davichan%401@cluster0.8ry2wie.mongodb.net/Blog?retryWrites=true&w=majority",
+  process.env.MONGO_URL,
+  // { user: "NTuser", pass: "Nimisha1234" },
   {
     useNewUrlparser: true
 
