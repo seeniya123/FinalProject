@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('layout/head') -%>
+
+    <body id="page-top">
+        <%- include ('layout/navbar') -%>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <!-- view to display the test results to the user -->
+                        <h1 class="mx-auto my-0 text-uppercase"> Test Result </h1>
+                    </div>
+                </div>
+            </div>
+           <div class="text-center-login">
+            
+            <section class="personalInfo">
+
+
+                <form action="/updateExaminerReview" method="post" >
+                    <div class="gridExam">
+    
+                      <h5>Name</h5>               
+                      <input type="text" value = '<%= DriverData.firstName + " " + DriverData.lastName %>' disabled id ="name" name="name"/>                  
+                      <h5>Test Type</h5>               
+                      <input type="text" value = '<%= DriverData.TestType %>' disabled id ="TestType" name="TestType"/> 
+                      <% if(DriverData.TestType == "") { %>  
+                      <h5>Appointment Status</h5>                    
+                      <input type="text" value = 'Not Scheduled' disabled />
+                      <% } %>
+                      
+                      <%if(DriverData.TestType && DriverData.comment != "") {%>   
+                      <%if(DriverData.examStatus) {%>   
+                        <h5>Exam Status</h5>                
+                      <input type="text" value = 'pass' disabled id ="status" name="status"/>     
+                      <%} else {%>  
+                        <h5>Exam Status</h5>  
+                        <input type="text" value = 'fail' disabled id ="status" name="status"/>     
+                        <%}}else{%> 
+                          <h5>Exam Status</h5>  
+                          <input type="text" value = 'No Result' disabled id ="status" name="status"/> 
+                        <%}%>
+                      <h5>Comment</h5>               
+                      <textarea  id ="comment" disabled value = '<%= DriverData.comment %>' name="comment"><%= DriverData.comment %></textarea>
+                
+                    </div>  
+                    
+                  </form>
+
+
+              </section> 
+            
+        </div>
+
+        </header>
+        <!-- About-->
+        
+             
+        <%- include ('layout/sectionFooter') -%>
+        <%- include ('layout/script') -%>
+    </body>
+</html>
+<style>
+    div{
+        margin-bottom: 10px;
+    }
+    .gridExam input{
+        margin-bottom: 30px;
+    }
+    .text-center-login{
+        margin-top: -50px;
+    }
+   
+</style>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('layout/head') -%>
+
+    <body id="page-top">
+        <%- include ('layout/navbar') %>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <!-- view for the user to login -->
+                        <h1 class="mx-auto my-0 text-uppercase">LOGIN</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center-login">
+                <div class="logFirst">
+                <form method="POST" action="/loginUser">
+                <P>LOGIN</P>
+                <section>
+                    
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                </div>               
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="pass" name="password">
+                </div>              
+                <input style="margin-top: 20px;" class="submit"  type="submit" value="Log In">
+                    <p style="color: red;"><%= liData %></p>
+            </section>
+           
+            </form>
+         </div>
+        
+                
+            </div>
+            </div>
+        </header>
+        <!-- About-->
+        
+        <%- include ('layout/sectionFooter') -%>
+        <%- include ('layout/script') -%>
+    </body>
+</html>
+
+
+<style>
+
+.text-center-login{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.logFirst{
+   margin-top: 12%;
+}
+
+.logFirst section , .signFirst section{
+    display: grid;
+    grid-gap: 10px;
+    
+}
+.submit{
+   width: 100px;
+   text-align: center;
+   margin-left: 50%;
+}
+</style>

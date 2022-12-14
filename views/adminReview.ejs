@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('layout/head') -%>
+
+    <body id="page-top">
+        <%- include ('layout/navbar') -%>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase"> </h1>
+                    </div>
+                </div>
+            </div>
+           <div class="text-center-login">
+            <!-- view for the admin to review the details -->
+                <section class="personalInfo">
+                    <h1 class="text-white mb-2" style="font-size: 30px;">Admin Review</h1> 
+                    <table id="customers">
+                        <tr>
+                            <th>Driver Name</th>
+                            <th>Driver username</th>
+                            <th>Test Type</th>
+                            <th>Exam Status</th>
+                            <th>Comment</th>
+                        
+                        </tr>
+                        <% DriverData.forEach(element => {
+                        %>
+                            <tr>
+                                <td><%= element.firstName + " " + element.lastName %></td>
+                                <td><%= element.username %></td>
+                                <td><%= element.TestType %></td>
+                                <% if(element.comment == ""){ %>
+                                    <td>Result not updated</td>
+                                <%} else if(element.examStatus){ %>
+                                <td>Pass</td>
+                                <%}else {%>
+                                    <td>Fail</td>
+                                    <%}%>
+                                
+                                <td><%= element.comment %></td>
+                            </tr>
+                        <%       
+                        }); %>                 
+                        
+                    </table>                    
+                  <!-- </form> -->
+                </section> 
+            </div>
+
+        </header>
+        <!-- About-->
+        
+             
+        <%- include ('layout/sectionFooter') -%>
+        <%- include ('layout/script') -%>
+    </body>
+</html>
+<style>
+    div{
+        margin-bottom: 10px;
+    }
+    
+    
+   
+</style>

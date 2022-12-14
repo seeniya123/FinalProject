@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('layout/head') -%>
+
+    <body id="page-top">
+        <%- include ('layout/navbar') -%>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        
+                    </div>
+                </div>
+            </div>
+           <div class="text-center-login">
+            
+            <section class="personalInfo">
+
+                <!-- view for the examiner -->
+                <h1 class="text-white mb-2" style="font-size: 30px;">Examiner</h1> 
+                <form action="/checkExaminer" method="post" >
+                    <div class="gridExam">
+                      <div class="gridExamTest">           
+                      <Select style="width: 400px" id ="TestType" name="TestType"> 
+                        
+                        <% if(TestType == "all") {%>
+                          <option selected value="all">All</option>
+                          <option value="g2">G2 Test</option>
+                          <option value="g">G Test</option>
+                        <% } else if(TestType == "g2"){%>
+                          <option  value="all">All</option>
+                          <option selected value="g2">G2 Test</option>
+                          <option value="g">G Test</option>
+                        <% } else if(TestType == "g"){%>
+                          <option  value="all">All</option>
+                          <option value="g2">G2 Test</option>
+                          <option selected value="g">G Test</option>
+                        <% }%>
+                      </Select>
+                      <div class="btn ">
+                        <div class="btn-layer">
+                        <input type="submit" style="width: 100px" class="field" name="submit" id="submit" value="Check"/></div>
+                      </div>
+                    </div>
+                    </div>  
+                  </form>
+                    <table id="customers">
+                      <tr>
+                        <th>Driver Name</th>
+                        <th>Vehicle Make</th>
+                        <th>Vehicle Model</th>
+                        <th>Test Type</th>
+                        <th>Action</th>
+                      </tr>
+                      <% DriverData.forEach(element => {
+                      %>
+                      <tr>
+                        <td><%= element.firstName + " " + element.lastName %></td>
+                        <td><%= element.car_details.make %></td>
+                        <td><%= element.car_details.model %></td>
+                        <td><%= element.TestType %></td>
+                        <td><a href="/examinerReview/<%= element._id %>">Review</a></td>
+                      </tr>
+                        <%       
+                        }); %>                 
+                      
+                    </table>
+    
+                      
+    
+                      
+                    </form>
+
+              </section> 
+            
+        </div>
+
+        </header>
+        
+        <%- include ('layout/sectionFooter') -%>
+        <%- include ('layout/script') -%>
+    </body>
+</html>

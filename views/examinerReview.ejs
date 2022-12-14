@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('layout/head') -%>
+
+    <body id="page-top">
+        <%- include ('layout/navbar') -%>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                    
+                    </div>
+                </div>
+            </div>
+           <div class="text-center-login">
+            
+            <section class="personalInfo">
+
+                 <!-- view for the examiner to review the user details  -->
+                
+                <form action="/updateExaminerReview" method="post" >
+                  <h1 class="text-white mb-2" style="font-size: 30px;">Examiner Review</h1> 
+                  <div class="gridExam">
+   
+                    <input type="text" value = '<%= DriverData._id %>' hidden id ="userId" name="userId"/> 
+                    <h5>Driver's name</h5>               
+                    <input type="text" value = '<%= DriverData.firstName + " " + DriverData.lastName %>' disabled id ="name" name="name"/> 
+                    
+                    <h5>Test Type</h5>               
+                    <input type="text" value = '<%= DriverData.TestType %>' disabled id ="TestType" name="TestType"/> 
+                    <h5>Exam Status</h5>               
+                    <Select id ="Status" style="width:200px" name="status">   
+                      <% if(DriverData.examStatus) {%>             
+                      <option selected value="pass">Pass</option>
+                      <option value="fail">Fail</option>
+                      <% } else{ %>
+                      <option value="pass">Pass</option>
+                      <option selected value="fail">Fail</option>
+                      <% }%>
+                    </Select>
+                    <h5>Comment</h5>               
+                    <textarea rows="3" cols="30" id ="comment" required value = '<%= DriverData.comment %>' name="comment"><%= DriverData.comment %></textarea>
+                    <div></div> 
+                    <div class="btn ">
+                      <div class="btn-layer">
+                      <input type="submit" class="field" name="submit" id="submit" value="Submit"/></div>
+                    </div>
+                  </div>  
+                  
+                </form>
+
+              </section> 
+            
+        </div>
+
+        </header>
+        
+        <%- include ('layout/sectionFooter') -%>
+        <%- include ('layout/script') -%>
+    </body>
+</html>
+
+<style>
+.gridExam input, select{
+  margin-bottom: 30px;
+}
+.text-center-login {
+        bottom: 500px;
+    }
+   
+
+</style>

@@ -1,0 +1,30 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container px-4">
+        <a class="navbar-brand" href="#page-top">Book DriveTest</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <% if(loggedIn) { %>
+                <% if(loggedUserType == "driver") { %>
+                    <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/g2">G2 Test</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/g">G Test</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/driverExamResult">Exam Result</a></li>
+                <% } %>
+                <% if(loggedUserType == "admin") { %>
+                    <li class="nav-item"><a class="nav-link" href="/appointment">Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/adminReview">Test Review</a></li>
+                <% } %>
+                <% if(loggedUserType == "examiner") { %>
+                    <li class="nav-item"><a class="nav-link" href="/examiner">Examiner</a></li>
+                <% } %>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                <% } %>
+                <% if(!loggedIn) { %>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
